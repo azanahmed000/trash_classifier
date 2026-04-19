@@ -114,15 +114,20 @@ The consistent accuracy across all three sets indicates the model generalizes we
 ## 📁 Project Structure
 
 ```
-trash-classifier/
-├── preprocessing.ipynb        # Jupyter notebook — dataset splitting
-├── preprocessing.py           # Commented Python script — dataset splitting
-├── trash-calssifierier (2).ipynb  # Jupyter notebook — model training (Kaggle)
-├── train.py                   # Commented Python script — model training
-├── trash_classifier_resnet18.pth  # Saved model weights (not tracked by git)
-├── requirements.txt           # Python dependencies
-├── .gitignore                 # Git ignore rules
-└── README.md                  # This file
+trash_classifier/
+│
+├── notebooks/                              # Jupyter notebooks (well-structured with markdown sections)
+│   ├── 01_data_preprocessing.ipynb         #   → Dataset splitting (train/val)
+│   └── 02_model_training.ipynb             #   → Model training, evaluation & saving
+│
+├── scripts/                                # Standalone Python scripts (commented versions)
+│   ├── preprocessing.py                    #   → Dataset splitting script
+│   └── train.py                            #   → Model training script
+│
+├── trash_classifier_resnet18.pth           # Saved model weights (not tracked by git)
+├── requirements.txt                        # Python dependencies
+├── .gitignore                              # Git ignore rules
+└── README.md                               # Project documentation
 ```
 
 ---
@@ -149,7 +154,7 @@ pip install -r requirements.txt
 
 ```bash
 # Split raw images into train/val folders (80/20 split)
-python preprocessing.py
+python scripts/preprocessing.py
 ```
 
 ### Training the Model
@@ -157,13 +162,13 @@ python preprocessing.py
 The model was trained on **Kaggle** using a **Tesla T4 GPU**. To retrain:
 
 1. Upload the dataset to Kaggle or Google Drive
-2. Open `trash-calssifierier (2).ipynb` in Kaggle
+2. Open `notebooks/02_model_training.ipynb` in Kaggle
 3. Run all cells
 
 Or use the Python script locally (GPU recommended):
 
 ```bash
-python train.py
+python scripts/train.py
 ```
 
 ### Loading the Trained Model (for Inference)
